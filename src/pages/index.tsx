@@ -21,17 +21,17 @@ const Index = () => (
       color: 'white',
     }}
     transition="all 0.15s ease-out" minH={'100%'}>
-    <Box ml='15px' textAlign={'center'} w='75px' zIndex={1}
-      position="fixed"
-      top={2}
-      left={3}
-      minH='100%'
+    <DarkModeSwitch />
+    <Box ml='15px' textAlign={'center'} w='75px' zIndex={5}
+
+      position={{ base: 'absolute', lg: 'fixed' }}
+      top={1}
+      left={1}
 
     >
-      <Image boxSize={'75px'} src='../logo.png' alt='xGraham Logo, created by Dall-E' />
+      <Image boxSize={{ base: '25px', lg: '75px' }} src='../logo.png' alt='xGraham Logo, created by Dall-E' />
     </Box>
     <Hero />
-    <DarkModeSwitch />
   </Box>
 )
 

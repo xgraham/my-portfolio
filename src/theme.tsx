@@ -22,11 +22,11 @@ const theme = extendTheme({
         _dark: '#ade3b8',
       },
       heroGradientStart: {
-        default: '#7928CA',
+        default: '#0464F3',
         _dark: '#e3a7f9',
       },
       heroGradientEnd: {
-        default: '#FF0080',
+        default: '#008A65',
         _dark: '#fbec8f',
       },
     },
@@ -39,6 +39,16 @@ const theme = extendTheme({
   },
   fonts,
   breakpoints,
+  styles: {
+    global: (props) => ({
+      body: {
+        bg: {
+          default: 'grey.50',
+          _dark: 'grey.800',
+        },
+      }
+    })
+  },
 })
 
 export default theme

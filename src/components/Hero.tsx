@@ -39,7 +39,7 @@ export const Hero = () => {
   const [header, setHeader] = React.useState(false)
 
   const listenScrollEvent = (event) => {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 5) {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 600) {
       return setHeader(true)
     } else {
       return setHeader(false)
@@ -65,30 +65,31 @@ export const Hero = () => {
       <Stack as={Box} textAlign={{ base: 'center', lg: 'left' }}
         bgGradient={{ lg: "linear(to-l, heroGradientEnd, heroGradientStart)", base: "linear(to-l, heroGradientStart, heroGradientEnd)" }}
         bgClip="text"
+
       >
         <Heading fontSize="4.5vw">My Projects:</Heading>
         <Box borderLeftWidth={'2px'} borderRightWidth={{ base: '2px', lg: '0px' }} borderColor={'heroGradientStart'}
           style={{ borderStyle: 'solid', borderImage: "linear-gradient(to bottom, var(--chakra-colors-heroGradientStart), var(--chakra-colors-heroGradientEnd)) 1 100%" }}  >
           <List spacing={2} ml='5px'>
             <ListItem><ListIcon as={CheckCircleIcon} color='heroGradientStart' />
-              <Button variant={'link'} color='heroGradientStart' fontSize={{ base: '2vw', lg: '1.3vw' }} onClick={() => { handleTabsChange(0) }} size={{ base: 'md', lg: 'sm' }}>
+              <Button variant={'link'} color='heroGradientStart' fontSize={{ base: '1vw', lg: '1.3vw' }} onClick={() => { handleTabsChange(0) }} size={{ base: 'sm', lg: 'sm' }}>
                 GMX Dashboard</Button>
             </ListItem>
             <ListItem>
               <ListIcon as={CheckCircleIcon} color='heroGradientStart' />
-              <Button variant={'link'} color='heroGradientStart' fontSize={{ base: '2vw', lg: '1.3vw' }} onClick={() => { handleTabsChange(1) }} size={{ base: 'md', lg: 'sm' }}>
+              <Button variant={'link'} color='heroGradientStart' fontSize={{ base: '1vw', lg: '1.3vw' }} onClick={() => { handleTabsChange(1) }} size={{ base: 'sm', lg: 'sm' }}>
                 Sentencer
               </Button>
             </ListItem>
             <ListItem>
               <ListIcon as={CheckCircleIcon} color='heroGradientStart' />
-              <Button variant={'link'} color='heroGradientStart' fontSize={{ base: '2vw', lg: '1.3vw' }} onClick={() => { handleTabsChange(2) }} size={{ base: 'md', lg: 'sm' }}>
+              <Button variant={'link'} color='heroGradientStart' fontSize={{ base: '1vw', lg: '1.3vw' }} onClick={() => { handleTabsChange(2) }} size={{ base: 'sm', lg: 'sm' }}>
                 LYF-Lines
               </Button>
             </ListItem>
             <ListItem>
               <ListIcon as={CheckCircleIcon} color='heroGradientStart' />
-              <Button variant={'link'} color='heroGradientStart' fontSize={{ base: '2vw', lg: '1.3vw' }} onClick={() => { handleTabsChange(3) }} size={{ base: 'md', lg: 'sm' }}>
+              <Button variant={'link'} color='heroGradientStart' fontSize={{ base: '1vw', lg: '1.3vw' }} onClick={() => { handleTabsChange(3) }} size={{ base: 'sm', lg: 'sm' }}>
                 Ms. McNulty's Guess Real?
               </Button>
             </ListItem>
@@ -105,11 +106,11 @@ export const Hero = () => {
   }
 
   const ProjectHeader = ({ visible }) => {
-    return <Box h='50px' textAlign={'center'} justifyContent={'space-between'}>
+    return <Box h='50px' textAlign={'center'} >
       {visible &&
-        <HStack justifyContent={'space-around'} pt='25px'>
+        <HStack justifyContent={'space-evenly'} pt='25px' >
           <Button size={{ base: 'sm', lg: 'sm' }} variant={'link'} transition={'color 1.5s ease;'} color={tabIndex == 0 ? 'heroGradientStart' : 'heroGradientEnd'} fontSize={{ base: '1vw', lg: '1.3vw' }} onClick={() => { handleTabsChange(0) }} >
-            GMX Dashboard
+            GMX Dash
           </Button>
           <Button size={{ base: 'sm', lg: 'sm' }} variant={'link'} transition={'color 1.5s ease;'} color={tabIndex == 1 ? 'heroGradientStart' : 'heroGradientEnd'} fontSize={{ base: '1vw', lg: '1.3vw' }} onClick={() => { handleTabsChange(1) }} >
             Sentencer
@@ -118,7 +119,7 @@ export const Hero = () => {
             LYF-Lines
           </Button>
           <Button size={{ base: 'sm', lg: 'sm' }} variant={'link'} transition={'color 1.5s ease;'} color={tabIndex == 3 ? 'heroGradientStart' : 'heroGradientEnd'} fontSize={{ base: '1vw', lg: '1.3vw' }} onClick={() => { handleTabsChange(3) }} >
-            Ms. McNulty's Guess Real?
+            Guess Real?
           </Button>
 
         </HStack>
@@ -127,27 +128,27 @@ export const Hero = () => {
   }
 
   return (
-    <Grid templateColumns='repeat(5, 1fr)' gap={3} pt={{ base: '15vh' }} minH={'100vh'} mx="115px" >
-      <GridItem colSpan={{ base: 5, lg: 3 }} h={{ base: '33vh', lg: '75vh' }}> <Hello /> </GridItem>
-      <GridItem colSpan={{ base: 5, lg: 2 }}  ><Projects /> </GridItem>
-      <GridItem colSpan={{ base: 5, lg: 5 }}>
+    <Grid templateColumns='repeat(5, 1fr)' gap={3} pt={{ base: '15vh' }} minH={'100vh'} mx={{ base: '15px', lg: '115px' }} >
+      <GridItem colSpan={{ base: 5, lg: 3 }} h={{ base: '33vh', lg: '75vh' }} mt={{ base: '15vh', lg: '15vh' }}> <Hello /> </GridItem>
+      <GridItem colSpan={{ base: 5, lg: 2 }} mt={{ base: 0, lg: '15vh' }} ><Projects /> </GridItem>
+      <GridItem colSpan={{ base: 5, lg: 5 }} >
         <Tabs index={tabIndex} onChange={handleTabsChange}>
           <ProjectHeader visible={header} />
-          <TabList >
-            <Tab w='33%' _selected={{ borderColor: 'var(--chakra-colors-heroGradientStart)' }}
+          <TabList justifyItems={'center'} >
+            <Tab w='25vw' borderBottomWidth='5px' _selected={{ borderColor: 'var(--chakra-colors-heroGradientStart)', }}
               borderColor="var(--chakra-colors-heroGradientEnd)" transition={'border-color 1.5s ease;'}
             ></Tab>
-            <Tab w='33%' _selected={{ borderColor: 'var(--chakra-colors-heroGradientStart)' }}
+            <Tab w='25vw' borderBottomWidth='5px' _selected={{ borderColor: 'var(--chakra-colors-heroGradientStart)', }}
               borderColor="var(--chakra-colors-heroGradientEnd)" transition={'border-color 1.5s ease;'}
             ></Tab>
-            <Tab w='33%' _selected={{ borderColor: 'var(--chakra-colors-heroGradientStart)' }}
+            <Tab w='25vw' borderBottomWidth='5px' _selected={{ borderColor: 'var(--chakra-colors-heroGradientStart)', }}
               borderColor="var(--chakra-colors-heroGradientEnd)" transition={'border-color 1.5s ease;'}
             ></Tab>
-            <Tab w='33%' _selected={{ borderColor: 'var(--chakra-colors-heroGradientStart)' }}
-              borderColor="var(--chakra-colors-heroGradientEnd)" transition={'border-color 1.5s ease;'}
+            <Tab w='25vw' borderBottomWidth='5px' _selected={{ borderColor: 'var(--chakra-colors-heroGradientStart)', }}
+              borderColor="var(--chakra-colors-heroGradientEnd)" transition={'border-color 1.5s ease-out;'}
             ></Tab>
           </TabList>
-          <TabPanels minH={'66vh'}>
+          <TabPanels minH={'66vh'} >
             <TabPanel>
               <ProjectCard title={'GMX Dashboard'} />
 
@@ -182,10 +183,10 @@ type ProjectCardProps = {
 const ProjectCard = (props: ProjectCardProps) => {
   const { title, description, image, link, repo } = props
   return (
-    <Center py={6} bg={useColorModeValue('gray.50', 'gray.900')}>
+    <Center w={'85vw'} py={6} bg={useColorModeValue('gray.50', 'gray.900')} pr={{ base: 0, lg: '45px' }} >
       <Box
         minH={{ base: '85vh', lg: '85vh' }}
-        w={'full'}
+        w={'100vw'}
         bg={useColorModeValue('gray.50', 'gray.800')}
         boxShadow={'2xl'}
         rounded={'lg'}
